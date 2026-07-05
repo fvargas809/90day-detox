@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
 import { Fraunces, Inter } from 'next/font/google';
+import { HexclaveProvider } from '@hexclave/next';
+import { stackServerApp } from '@/lib/stack';
 import './globals.css';
 
 const fraunces = Fraunces({
@@ -118,7 +120,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        {children}
+        <HexclaveProvider app={stackServerApp}>
+          {children}
+        </HexclaveProvider>
       </body>
     </html>
   );

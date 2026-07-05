@@ -1,4 +1,6 @@
+import { Suspense } from 'react';
 import PlaceholderFrame from './PlaceholderFrame';
+import EbookCta from './EbookCta';
 
 export default function FinalCTA() {
   return (
@@ -15,13 +17,10 @@ export default function FinalCTA() {
 
           <div className="mt-8 bg-white/70 rounded-2xl p-6 border border-clayDark/40">
             <p className="font-display text-lg">New member promos</p>
-            <p className="text-inkMuted mt-1">Qualify for these free gifts when you join today.</p>
-            <a
-              href="#"
-              className="inline-block mt-5 rounded-full bg-forest text-linen px-6 py-3 font-semibold hover:bg-forestDark transition-colors"
-            >
-              Grab Our Free Ebook
-            </a>
+            <p className="text-inkMuted mt-1">Sign in to qualify for these free gifts when you join today.</p>
+            <Suspense fallback={<div className="h-11 w-48 rounded-full bg-forest/20 mt-5" />}>
+              <EbookCta />
+            </Suspense>
           </div>
         </div>
 

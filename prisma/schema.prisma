@@ -1,0 +1,53 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client"
+  output   = "../app/generated/prisma"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DATABASE_URL_UNPOOLED")
+}
+
+// A person who submitted any form on the site
+model Lead {
+  id         String   @id @default(cuid())
+  email      String   @unique
+  name       String?
+  phone      String?
+  source     String?  // which page/section they submitted from, e.g. "hero_cta"
+  offerTag   String?  // which offer they responded to, e.g. "free_ebook", "90_day_program"
+  authUserId String?  @unique // links to the Hexclave (Stack Auth) user id, once they sign in
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  events         FunnelEvent[]
+  sequenceStatus EmailSequenceStatus?
+}
+
+// Every meaningful step a lead takes through the funnel — lets you see
+// where people drop off (viewed page -> opted in -> booked consult, etc.)
+model FunnelEvent {
+  id        String   @id @default(cuid())
+  leadId    String
+  lead      Lead     @relation(fields: [leadId], references: [id])
+  step      String   // e.g. "landing_view", "ebook_opt_in", "consult_booked"
+  metadata  Json?
+  createdAt DateTime @default(now())
+}
+
+// Tracks where a lead is inside an automated email drip sequence
+model EmailSequenceStatus {
+  id           String    @id @default(cuid())
+  leadId       String    @unique
+  lead         Lead      @relation(fields: [leadId], references: [id])
+  sequenceName String    // e.g. "welcome_series"
+  currentStep  Int       @default(0)
+  lastSentAt   DateTime?
+  completedAt  DateTime?
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+}
