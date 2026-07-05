@@ -14,7 +14,7 @@ function AuthStatusInner() {
           await app.signOut();
           window.location.href = '/';
         }}
-        className="text-sm font-medium text-ink hover:text-forest transition-colors"
+        className="text-xs sm:text-sm font-medium text-ink hover:text-forest transition-colors whitespace-nowrap"
       >
         Sign Out
       </button>
@@ -24,7 +24,7 @@ function AuthStatusInner() {
   return (
     <a
       href="/handler/sign-in"
-      className="text-sm font-medium text-ink hover:text-forest transition-colors"
+      className="text-xs sm:text-sm font-medium text-ink hover:text-forest transition-colors whitespace-nowrap"
     >
       Sign In
     </a>
