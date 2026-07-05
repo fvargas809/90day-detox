@@ -34,17 +34,17 @@ export default function Hero() {
             <img 
               src="/images/hero-wide.svg"
               alt="Wide lifestyle photo of her, mid-movement or coaching a client (energetic, natural light)"
-              className="w-full aspect-[16/9] object-coverrounded-lg"
+              className="w-full aspect-[16/9] object-cover rounded-lg"
             />
           </div>
              <img 
-              src="/images/Tiffany-1.jpeg"
+              src="/images/tiffany-1.svg"
               alt="Close-up portrait, warm smile, healthy glow"
               className="w-full aspect-square object-cover rounded-lg"
              />
          
          <img 
-          src="/images/Tiffany-2.jpeg"
+          src="/images/tiffany-2.svg"
           alt="Close-up portrait, warm smile, healthy glow"
           className="w-full aspect-square object-cover rounded-lg"
          />
