@@ -4,7 +4,7 @@ import EbookCta from './EbookCta';
 
 export default function FinalCTA() {
   return (
-    <section className="bg-surface">
+    <section id="ebook" className="bg-surface">
       <div className="max-w-6xl mx-auto px-6 py-20 grid md:grid-cols-2 gap-12 items-center">
         <div>
           <h2 className="text-3xl md:text-4xl">Step into your healing.</h2>

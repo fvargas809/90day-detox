@@ -13,7 +13,7 @@ function EbookCtaInner() {
   if (!user) {
     return (
       <a
-        href="/handler/sign-in?after_auth_return_to=%2F%23pricing"
+        href="/handler/sign-in?after_auth_return_to=%2F%23ebook"
         className="inline-block mt-5 rounded-full bg-forest text-linen px-6 py-3 font-semibold hover:bg-forestDark transition-colors"
       >
         Sign In to Grab Our Free Ebook
