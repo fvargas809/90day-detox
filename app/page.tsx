@@ -7,6 +7,7 @@ import VideoEducation from '@/components/VideoEducation';
 import PricingTiers from '@/components/PricingTiers';
 import FinalCTA from '@/components/FinalCTA';
 import Footer from '@/components/Footer';
+import ReviewsSection from '@/components/ReviewsSection';
 
 export default function Home() {
   return (
@@ -18,6 +19,7 @@ export default function Home() {
         <ProgramFeatures />
         <ProductBanner />
         <VideoEducation />
+        <ReviewsSection />
         <PricingTiers />
         <FinalCTA />
       </main>

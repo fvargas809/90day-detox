@@ -31,25 +31,24 @@ export default function Hero() {
 
         <div className="grid grid-cols-2 gap-4">
           <div className="col-span-2">
-            <PlaceholderFrame
-              label="Wide lifestyle photo of her, mid-movement or coaching a client (energetic, natural light)"
-              aspect="aspect-[16/9]"
-              shape="rounded"
-              tone="ochre"
+            <img 
+              src="/images/hero-wide.svg"
+              alt="Wide lifestyle photo of her, mid-movement or coaching a client (energetic, natural light)"
+              className="w-full aspect-[16/9] object-coverrounded-lg"
             />
           </div>
-          <PlaceholderFrame
-            label="Close-up portrait, warm smile, healthy glow"
-            aspect="aspect-square"
-            shape="arch"
-            tone="sage"
-          />
-          <PlaceholderFrame
-            label="Product flat-lay: supplements + meal plan booklet"
-            aspect="aspect-square"
-            shape="rounded"
-            tone="clay"
-          />
+             <img 
+              src="/images/Tiffany-1.jpeg"
+              alt="Close-up portrait, warm smile, healthy glow"
+              className="w-full aspect-square object-cover rounded-lg"
+             />
+         
+         <img 
+          src="/images/Tiffany-2.jpeg"
+          alt="Close-up portrait, warm smile, healthy glow"
+          className="w-full aspect-square object-cover rounded-lg"
+         />
+
         </div>
       </div>
     </section>

@@ -7,7 +7,9 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DATABASE_URL_UNPOOLED")
 }
 
 // A person who submitted any form on the site
@@ -48,4 +50,15 @@ model EmailSequenceStatus {
   completedAt  DateTime?
   createdAt    DateTime  @default(now())
   updatedAt    DateTime  @updatedAt
+}
+
+// A testimonial/review submitted by a site visitor. Starts unapproved so
+// the site owner can moderate before it appears publicly.
+model Review {
+  id        String   @id @default(cuid())
+  name      String
+  rating    Int      @default(5) // 1-5
+  body      String
+  approved  Boolean  @default(false)
+  createdAt DateTime @default(now())
 }

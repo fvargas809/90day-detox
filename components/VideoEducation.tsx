@@ -30,19 +30,17 @@ export default function VideoEducation() {
           </div>
         </div>
 
-        {/* Replace the src below with the real embed URL (YouTube/Vimeo) when ready */}
-        <div className="aspect-video rounded-3xl overflow-hidden border-2 border-dashed border-sage bg-white flex items-center justify-center">
-          <div className="text-center px-6">
-            <div className="mx-auto mb-3 w-14 h-14 rounded-full bg-forest text-linen flex items-center justify-center">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M8 5v14l11-7z" />
-              </svg>
-            </div>
-            <p className="text-sm font-semibold uppercase tracking-wide text-inkMuted">Video placeholder</p>
-            <p className="text-sm text-inkMuted mt-1">
-              Embed the &ldquo;Why Your Liver First&rdquo; presentation here
-            </p>
-          </div>
+        <div className="aspect-video rounded-3xl overflow-hidden">
+          <iframe
+            width="100%"
+            height="100%"
+            src="https://www.youtube.com/embed/pdzYGZJ9oqo"
+            title="Why Your Liver First"
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+            className="w-full h-full"
+          ></iframe>
         </div>
       </div>
     </section>
