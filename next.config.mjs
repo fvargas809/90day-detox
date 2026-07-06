@@ -5,6 +5,11 @@ const nextConfig = {
       { protocol: 'https', hostname: '**' },
     ],
   },
+  experimental: {
+    outputFileTracingIncludes: {
+      '/api/ebook/download': ['./assets/ebook/**'],
+    },
+  },
 };
 
 export default nextConfig;
