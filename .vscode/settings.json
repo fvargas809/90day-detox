@@ -1,0 +1,11 @@
+{
+    "WillLuke.nextjs.hasPrompted": true,
+    "prisma.prismaPath": "./node_modules/prisma",
+    "prisma.showPrismaDataPlatformNotification": false,
+    "prisma.fileWatcher": false,
+    "prisma.trace.server": "off",
+    "[prisma]": {
+        "editor.formatOnSave": true
+    },
+    "typescript.tsdk": "node_modules/typescript/lib"
+}

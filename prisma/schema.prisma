@@ -18,8 +18,8 @@ model Lead {
   email      String   @unique
   name       String?
   phone      String?
-  source     String?  // which page/section they submitted from, e.g. "hero_cta"
-  offerTag   String?  // which offer they responded to, e.g. "free_ebook", "90_day_program"
+  source     String? // which page/section they submitted from, e.g. "hero_cta"
+  offerTag   String? // which offer they responded to, e.g. "free_ebook", "90_day_program"
   authUserId String?  @unique // links to the Hexclave (Stack Auth) user id, once they sign in
   createdAt  DateTime @default(now())
   updatedAt  DateTime @updatedAt
@@ -34,7 +34,7 @@ model FunnelEvent {
   id        String   @id @default(cuid())
   leadId    String
   lead      Lead     @relation(fields: [leadId], references: [id])
-  step      String   // e.g. "landing_view", "ebook_opt_in", "consult_booked"
+  step      String // e.g. "landing_view", "ebook_opt_in", "consult_booked"
   metadata  Json?
   createdAt DateTime @default(now())
 }
@@ -44,7 +44,7 @@ model EmailSequenceStatus {
   id           String    @id @default(cuid())
   leadId       String    @unique
   lead         Lead      @relation(fields: [leadId], references: [id])
-  sequenceName String    // e.g. "welcome_series"
+  sequenceName String // e.g. "welcome_series"
   currentStep  Int       @default(0)
   lastSentAt   DateTime?
   completedAt  DateTime?
@@ -61,4 +61,20 @@ model Review {
   body      String
   approved  Boolean  @default(false)
   createdAt DateTime @default(now())
+}
+
+// An admin-editable offer/funnel. The offerTag is what ties this to Lead
+// and FunnelEvent records — editing a Funnel here changes the button text,
+// success message, and behavior on the live site without any code change.
+model Funnel {
+  id             String   @id @default(cuid())
+  name           String // internal label shown in the admin list, e.g. "Free Consultation"
+  offerTag       String   @unique // e.g. "consultation_request" - must match usage in code
+  ctaLabel       String // button text visitors see
+  successMessage String   @default("Thanks! We'll be in touch shortly.")
+  variant        String   @default("forest") // forest | ochre | outline
+  collectPhone   Boolean  @default(true)
+  active         Boolean  @default(true) // turning this off hides the CTA on the live site
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
 }

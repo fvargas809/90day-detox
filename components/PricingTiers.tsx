@@ -1,3 +1,5 @@
+import DynamicLeadCaptureCTA from './DynamicLeadCaptureCTA';
+
 const TIERS = [
   {
     name: 'Foundational Wellness',
@@ -6,6 +8,7 @@ const TIERS = [
     tagline: 'Rebuild from the inside out.',
     body: 'Support energy, digestion, and nutrient absorption naturally. The perfect starting point for anyone ready to feel balanced and nourished.',
     cta: 'Build My Foundation',
+    offerTag: 'tier_foundational',
     highlight: false,
   },
   {
@@ -15,6 +18,7 @@ const TIERS = [
     tagline: 'Reset your metabolism and reduce toxic load.',
     body: 'Gentle liver support including the Liver Cleanse, a 30-day meal plan, and full educational guide. Ideal for hormone imbalance, fatigue, or slow weight loss.',
     cta: 'Begin My Reset',
+    offerTag: 'tier_liver_cleanse',
     highlight: true,
   },
   {
@@ -24,6 +28,7 @@ const TIERS = [
     tagline: 'Three phases: Cleanse \u2192 Rebuild \u2192 Thrive.',
     body: 'A customized full-body approach. The best option for those ready to transform their body and energy long-term.',
     cta: 'Apply to the 90 Day Program',
+    offerTag: 'tier_90day',
     highlight: false,
   },
 ];
@@ -61,16 +66,14 @@ export default function PricingTiers() {
               <p className={`mt-5 leading-relaxed flex-1 ${tier.highlight ? 'text-linen/80' : 'text-inkMuted'}`}>
                 {tier.body}
               </p>
-              <a
-                href="#"
-                className={`mt-8 text-center rounded-full px-6 py-3 font-semibold transition-colors ${
-                  tier.highlight
-                    ? 'bg-ochre text-forestDark hover:bg-ochreLight'
-                    : 'bg-forest text-linen hover:bg-forestDark'
-                }`}
-              >
-                {tier.cta} &rarr;
-              </a>
+              <DynamicLeadCaptureCTA
+                fallbackLabel={`${tier.cta} \u2192`}
+                offerTag={tier.offerTag}
+                source="pricing_tiers"
+                fallbackSuccessMessage="Thanks! We'll follow up with next steps by email."
+                fallbackVariant={tier.highlight ? 'ochre' : 'forest'}
+                className="mt-8"
+              />
             </div>
           ))}
         </div>
